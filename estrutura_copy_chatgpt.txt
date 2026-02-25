@@ -1,0 +1,47 @@
+Você é um copywriter especialista em landing pages de vendas diretas para produtos low-ticket (produtos baratos de até R$ 50).
+Preciso que você escreva a copy para uma landing page de um "Pack de Esquemas Elétricos Automotivos PRO". O público-alvo são mecânicos automotivos e eletricistas de carros. O tom deve ser direto, sem enrolação, persuasivo e usando o linguajar da oficina ("mão de graxa", "carro no elevador", "cliente no cangote").
+
+A página atual já tem uma estrutura definida e um design "Automotive Premium" (escuro, neon verde, estilo tech/acelerado). Eu preciso que você melhore/expanda a copy atual seguindo EXATAMENTE esta estrutura de blocos predefinida para que eu possa apenas copiar as suas respostas e colar no código fonte.
+
+Aqui está a estrutura da página e os textos atuais (como placeholders/rascunhos) que precisam ser aprimorados:
+
+=== 1. HEADER & PROMESSA (O primeiro impacto na tela) ===
+- Manchet/Aviso (Pequeno aviso chamativo em cima do título principal):
+  Texto atual: "ATENÇÃO MECÂNICO: Pare de perder dinheiro com carro parado no elevador"
+- Headline Principal (A grande promessa foda):
+  Texto atual: "O "Kit Socorro" Definitivo: Tenha os Esquemas Elétricos Mais Usados do Brasil na Tela do Seu Celular."
+- Sub-headline (Apoiando a promessa com detalhes da solução):
+  Texto atual: "Acesse pinagens, sincronismos e diagramas em 5 segundos sem precisar ir até o PC com a mão suja de graxa."
+- Botão CTA:
+  Texto atual: "QUERO MEU ACESSO AGORA POR R$ 20"
+
+=== 2. SEÇÃO: AGITAÇÃO DA DOR ===
+- Título da Seção:
+  Texto atual: "A rotina na oficina é implacável. Você sabe disso."
+- 3 Itens de dores do mecânico no dia a dia (seja bem específico sobre coisas frustrantes do cotidiano da oficina elétrica):
+  Item 1 atual: "Caçar manual grátis no Google atrasa o serviço"
+  Item 2 atual: "Cliente no cangote perguntando se o carro tá pronto"
+  Item 3 atual: "Risco de queimar módulo por pinagem errada"
+
+=== 3. SEÇÃO: A SOLUÇÃO ===
+- Título da Seção:
+  Texto atual: "Resolva o problema direto do bolso do seu macacão."
+- 4 Benefícios/Funcionalidades principais do Pack (textos curtos e de efeito):
+  Item 1 atual: "Acesso Imediato no Google Drive"
+  Item 2 atual: "Busca rápida pelo celular em segundos"
+  Item 3 atual: "Modelos Nacionais e Importados"
+  Item 4 atual: "Tabelas de Torque e Sincronismo inclusas"
+
+=== 4. OFERTA IRRECUSÁVEL & ANCORAGEM DE PREÇO ===
+- Título da Seção:
+  Texto atual: "Tudo isso tem o preço de um diagnóstico básico."
+- Preço Original ancorado: "R$ 97,00" (Mantenha esses valores no seu texto)
+- Preço Atual da Oferta: "R$ 20,00" (Mantenha esses valores no seu texto)
+- Argumento Lógico (Por que R$ 20 é tão barato perto do valor entregue? Precisa ser muito convincente):
+  Texto atual: "Menos que o valor de um litrão de fim de semana pra adiantar seu serviço da semana inteira."
+- Botão CTA Final:
+  Texto atual: "GARANTIR MEU ACESSO AGORA"
+
+O que você deve fazer:
+Entregue 2 (duas) opções de variações de Copy para CADA BLOCO, sendo a Opção 1 um pouco mais agressiva na dor e a Opção 2 mais focada no benefício e ganho de tempo/dinheiro.
+Mantenha os textos no mesmo tamanho aproximado dos originais, para não quebrar o layout da página. Separe claramente onde começa e onde termina cada texto para facilitar o copiar e colar.
