@@ -37,11 +37,6 @@ export default function Home() {
         {/* App Preview Image Preview */}
         <div className="w-full max-w-md mx-auto mb-10 relative">
           <div className="absolute inset-0 bg-emerald-400/30 blur-2xl rounded-full"></div>
-          <img
-            src="/2026.png"
-            alt="Preview do App Pack Simplo 2026"
-            className="relative z-10 w-full h-auto rounded-2xl shadow-xl border border-slate-200/50 hover:scale-[1.02] transition-transform duration-300"
-          />
         </div>
 
         <div className="flex flex-col items-center gap-4 w-full">
