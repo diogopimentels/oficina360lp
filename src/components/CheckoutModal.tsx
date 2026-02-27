@@ -108,7 +108,7 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                                 GERANDO PAGAMENTO...
                             </>
                         ) : (
-                            "PAGAR R$ 21,49 AGORA"
+                            "TESTAR PAGAMENTO (R$ 1,00)"
                         )}
                     </button>
                 </form>

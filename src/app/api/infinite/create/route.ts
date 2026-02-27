@@ -6,17 +6,20 @@ export async function POST(request: Request) {
         const body = await request.json().catch(() => ({}));
         const { name, whatsapp } = body;
 
+        // Pega a URL raiz de onde o usuário está vindo (ex: http://localhost:3000 ou https://seusite.com)
+        const origin = request.headers.get("origin") || "http://localhost:3000";
+
         // The client cannot tamper with prices or redirect URLs.
         const payload: any = {
             handle: "conectamaisdigital",
             items: [
                 {
                     quantity: 1,
-                    price: 2149,
+                    price: 100, // TESTE: Reduzido para R$ 1,00 temporariamente
                     description: "Pack Simplo 2026 - Acesso Imediato"
                 }
             ],
-            redirect_url: "https://drive.google.com/drive/folders/1yi62no3Y53-3HKI-w-l9FeeXeiD83srX?usp=sharing"
+            redirect_url: `${origin}/obrigado`
         };
 
         // Injeta os dados do Cliente no Payload caso tenham sido informados
