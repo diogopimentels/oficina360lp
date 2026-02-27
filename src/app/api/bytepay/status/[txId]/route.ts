@@ -1,8 +1,8 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
 
-export async function GET(request: Request, context: { params: { txId: string } }) {
+export async function GET(request: NextRequest, { params }: { params: Promise<{ txId: string }> }) {
     const apiKey = "bp_erOHgpkmcpVHL6bCk7kl3pXfMaIGOrAx";
-    const { txId } = context.params;
+    const { txId } = await params;
 
     try {
         const res = await fetch(`https://api.bytepaybr.com/api/status/${txId}?apiKey=${apiKey}`, {
