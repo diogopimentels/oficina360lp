@@ -23,7 +23,7 @@ export default function Home() {
           O Pack Elétrica Automotiva PRO: ABS, Injeção, Câmbio, Imobilizador e Muito Mais, Direto no <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Seu Celular</span>.
         </h1>
 
-        <p className="text-lg md:text-xl text-slate-400 max-w-3xl font-medium mb-10 leading-relaxed">
+        <p className="text-lg md:text-xl text-slate-400 max-w-3xl font-medium mb-8 leading-relaxed">
           Esquemas completos de elétrica, códigos de falha, sincronismos e revisão técnica acessíveis em segundos, sem sair do elevador.
         </p>
 
@@ -90,15 +90,14 @@ export default function Home() {
           </div>
           <div className="flex-1 w-full bg-slate-900 rounded-[28px] p-1.5 shadow-2xl border border-slate-800 relative group overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <div className="bg-slate-950 rounded-[22px] p-10 h-full min-h-[350px] flex flex-col justify-center items-center text-center relative overflow-hidden ring-1 ring-inset ring-slate-800/50">
+            <div className="bg-slate-950 rounded-[22px] p-2 h-full min-h-[350px] flex flex-col justify-center items-center text-center relative overflow-hidden ring-1 ring-inset ring-slate-800/50">
               <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/5 blur-3xl"></div>
 
-              <Smartphone className="w-20 h-20 text-slate-700 mb-6" strokeWidth={1.5} />
-              <h3 className="font-bold text-2xl text-white mb-3 tracking-tight">Pack Elétrica PRO</h3>
-              <div className="flex flex-wrap justify-center gap-2">
-                <span className="px-3 py-1 bg-slate-800/80 rounded-full text-xs text-slate-300 font-medium border border-slate-700">Integrado ao Drive</span>
-                <span className="px-3 py-1 bg-slate-800/80 rounded-full text-xs text-slate-300 font-medium border border-slate-700">Offline disponível</span>
-              </div>
+              <img
+                src="/2026.png"
+                alt="Pack Elétrica PRO Interface"
+                className="relative z-10 w-full h-full object-cover rounded-[18px] hover:scale-[1.02] transition-transform duration-500"
+              />
             </div>
           </div>
         </div>
@@ -114,6 +113,9 @@ export default function Home() {
             <div className="absolute -top-32 -right-32 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full"></div>
 
             <div className="mb-10 text-center flex flex-col items-center">
+              <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 font-bold text-sm md:text-base tracking-wide shadow-[0_0_15px_rgba(245,158,11,0.1)]">
+                🔥 Pack Simplo 2026 • Literaturas Atualizadas
+              </div>
               <p className="text-slate-400 text-lg font-semibold mb-2 line-through">De R$ 97,00</p>
               <div className="flex items-start justify-center">
                 <span className="text-2xl font-medium text-slate-500 mt-2 mr-1">R$</span>

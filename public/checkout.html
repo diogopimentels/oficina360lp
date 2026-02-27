@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Seguro - Pack Simplo</title>
+
+    <!-- Tailwind CSS (via CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: { 400: '#34d399', 500: '#10b981', 600: '#059669' }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Ajuste fino para mobile e loading spinner */
+        .loader {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border-left-color: #10b981;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-950 text-slate-200 min-h-screen flex flex-col font-sans select-none antialiased">
+
+    <!-- Navbar simples -->
+    <header class="w-full bg-slate-900 border-b border-slate-800 p-4 text-center shadow-md">
+        <h1 class="text-xl font-bold flex justify-center items-center gap-2">
+            <i data-lucide="shield-check" class="text-emerald-500 w-6 h-6"></i>
+            Checkout Ambiente Seguro
+        </h1>
+    </header>
+
+    <main class="flex-1 flex items-center justify-center p-4 w-full max-w-lg mx-auto">
+
+        <div
+            class="w-full bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+            <!-- Efeito de brilho de fundo -->
+            <div
+                class="absolute -top-32 -left-32 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full pointer-events-none">
+            </div>
+
+            <!-- Header do Produto -->
+            <div class="text-center mb-6 border-b border-slate-800 pb-6 fade-in">
+                <p class="text-sm font-medium text-slate-400 uppercase tracking-widest mb-1">Total a Pagar</p>
+                <div class="flex items-start justify-center text-white">
+                    <span class="text-2xl mt-1 mr-1 text-slate-400">R$</span>
+                    <span class="text-6xl font-black tracking-tight">29</span>
+                    <span class="text-2xl font-bold text-emerald-400 mt-2">,90</span>
+                </div>
+                <p class="text-slate-300 font-medium mt-3">Pack Simplo (Esquemas + Manuais)</p>
+            </div>
+
+            <!-- CONTAINER ESTADO 1: LOADING -->
+            <div id="state-loading" class="flex flex-col items-center justify-center py-10 fade-in">
+                <div class="loader mb-6"></div>
+                <p class="text-lg font-medium text-slate-300">Resgatando seu acesso...</p>
+                <p class="text-sm text-slate-500 mt-2 text-center">Gerando código PIX seguro via BytePay. Aguarde um
+                    instante.</p>
+            </div>
+
+            <!-- CONTAINER ESTADO 2: PAGAMENTO (PIX GERADO) -->
+            <div id="state-payment" class="hidden flex-col items-center fade-in">
+                <div
+                    class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider mb-6 flex items-center gap-2">
+                    <i data-lucide="zap" class="w-4 h-4"></i> Liberação Automática
+                </div>
+
+                <p class="text-center text-slate-300 text-sm mb-4">
+                    Abra o app do seu banco e escolha <strong>Pix Copia e Cola</strong> ou leia o <strong>QR
+                        Code</strong> abaixo.
+                </p>
+
+                <!-- IMAGEM QR CODE -->
+                <div
+                    class="bg-white p-3 rounded-2xl shadow-inner mb-6 w-56 h-56 flex items-center justify-center border-4 border-slate-800 relative group">
+                    <img id="pixImg" src="" alt="QR Code PIX" class="w-full h-full object-contain hidden" />
+                    <!-- Fallback temporario visual -->
+                    <div id="qrFallback" class="text-slate-400 text-xs text-center">QR Code Gerado</div>
+                </div>
+
+                <!-- COPIA E COLA -->
+                <div class="w-full space-y-3">
+                    <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider">Código Pix (Copia e
+                        Cola)</label>
+                    <div class="flex gap-2">
+                        <input id="pixCopyPaste" type="text" readonly
+                            class="flex-1 bg-slate-950 border border-slate-700 text-slate-300 text-sm rounded-xl px-4 py-3 focus:outline-none focus:border-emerald-500 font-mono"
+                            value="" />
+                        <button id="copyBtn" onclick="copyPixCode()"
+                            class="bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white rounded-xl px-4 flex items-center justify-center transition-colors shadow-md">
+                            <i data-lucide="copy" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="w-full mt-6 bg-slate-950/50 rounded-xl p-4 border border-slate-800 flex items-start gap-3">
+                    <i data-lucide="info" class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5"></i>
+                    <p class="text-xs text-slate-400 leading-relaxed">
+                        Após o pagamento, esta página será atualizada automaticamente em até 5 segundos com o seu acesso
+                        ao Google Drive.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CONTAINER ESTADO 3: SUCESSO -->
+            <div id="state-success" class="hidden flex-col items-center py-6 fade-in text-center">
+                <div
+                    class="w-20 h-20 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mb-6">
+                    <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white mb-2">PAGAMENTO APROVADO!</h2>
+                <p class="text-slate-400 mb-8 leading-relaxed">Seu pagamento de R$ 29,90 foi confirmado com sucesso. O
+                    seu material já está liberado para uso.</p>
+
+                <a href="https://drive.google.com/drive/folders/SUA_PASTA_DO_DRIVE_AQUI" id="acessarPackBtn"
+                    target="_blank"
+                    class="w-full flex items-center justify-center gap-2 py-5 text-lg font-bold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all animate-pulse">
+                    <i data-lucide="unlock" class="w-5 h-5"></i>
+                    ACESSAR PACK AGORA
+                </a>
+            </div>
+
+            <!-- CONTAINER ESTADO 4: ERRO -->
+            <div id="state-error" class="hidden flex-col items-center py-6 fade-in text-center">
+                <div class="w-16 h-16 bg-red-500/20 text-red-400 rounded-full flex items-center justify-center mb-6">
+                    <i data-lucide="x-circle" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-xl font-bold text-white mb-2">Ops! Algo deu errado.</h2>
+                <p id="errorMsg" class="text-slate-400 text-sm mb-6">Não foi possível gerar seu PIX no momento.
+                    Verifique sua conexão e tente novamente.</p>
+
+                <button onclick="initCheckout()"
+                    class="w-full py-4 text-sm font-bold bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white rounded-xl transition-all">
+                    TENTAR NOVAMENTE
+                </button>
+            </div>
+
+        </div>
+
+        <!-- SELOS SEGURANÇA -->
+        <div class="mt-8 text-center text-xs text-slate-600 w-full absolute bottom-4 left-0">
+            <p>BytePay &copy; Checkout Criptografado de Ponta-A-Ponta</p>
+        </div>
+    </main>
+
+    <!-- LOGICA DE NEGOCIO - VANILLA JS -->
+    <script>
+        // Inicializa Icones
+        lucide.createIcons();
+
+        // Configuração
+        const AMOUNT = "29.90";
+
+        // Gerenciamento de Estado
+        let checkInterval = null;
+
+        // Custom Toast / Popup Inteligente
+        function showPopup(message, type = 'error') {
+            const popup = document.createElement('div');
+            popup.className = `fixed top-6 left-1/2 -translate-x-1/2 px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 z-50 fade-in border ${type === 'error' ? 'bg-red-950/90 border-red-500/50 text-red-200' : 'bg-emerald-950/90 border-emerald-500/50 text-emerald-200'
+                } backdrop-blur-md max-w-[90vw] md:max-w-md`;
+
+            popup.innerHTML = `
+                <div class="${type === 'error' ? 'text-red-400' : 'text-emerald-400'}">
+                    ${type === 'error' ? '<i data-lucide="alert-triangle" class="w-6 h-6"></i>' : '<i data-lucide="check-circle" class="w-6 h-6"></i>'}
+                </div>
+                <div class="text-sm font-medium leading-relaxed">${message}</div>
+                <button onclick="this.parentElement.remove()" class="ml-2 hover:opacity-70 transition-opacity">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            `;
+            document.body.appendChild(popup);
+            lucide.createIcons();
+
+            // Auto-remove após 5 segundos
+            setTimeout(() => {
+                if (popup.parentElement) {
+                    popup.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+                    setTimeout(() => popup.remove(), 300);
+                }
+            }, 5000);
+        }
+
+        function showState(stateId) {
+            ['state-loading', 'state-payment', 'state-success', 'state-error'].forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+                document.getElementById(id).classList.remove('flex');
+            });
+            document.getElementById('state-' + stateId).classList.remove('hidden');
+            document.getElementById('state-' + stateId).classList.add('flex');
+        }
+
+        // 1. GERAÇÃO DO PIX
+        async function initCheckout() {
+            showState('loading');
+
+            try {
+                // Chama a rota local que faz o Proxy Seguro sem CORS
+                const response = await fetch(`/api/bytepay/create?amount=${AMOUNT}`, {
+                    method: 'GET'
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Proxy local retornou código ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log("[DEBUG] Resposta API BytePay:", data);
+
+                const txId = data.id || data.transactionId || data.txid || data.reference;
+                const qrCodeData = data.qrCode || data.qrCodeBase64 || data.qr_code || data.imagemQrcode;
+                const copiaColaData = data.copyPaste || data.payload || data.pixCopiaECola || data.qrcode || data.textoQrcode;
+
+                if (!txId && !copiaColaData) {
+                    throw new Error("Formato de integração modificado pela BytePay. Contate o dev.");
+                }
+
+                // Renderiza Dados na Tela
+                document.getElementById('pixCopyPaste').value = copiaColaData || "Nenhum código gerado";
+
+                if (qrCodeData) {
+                    const imgEl = document.getElementById('pixImg');
+                    imgEl.src = qrCodeData.startsWith('data:image') ? qrCodeData : `data:image/png;base64,${qrCodeData}`;
+                    imgEl.classList.remove('hidden');
+                    document.getElementById('qrFallback').classList.add('hidden');
+                }
+
+                showState('payment');
+
+                // 2. INICIA POLLING DE 5 EM 5 SEGUNDOS
+                if (txId) {
+                    checkInterval = setInterval(() => checkStatus(txId), 5000);
+                }
+
+            } catch (error) {
+                console.error("[ERROR] Falha Pix:", error);
+
+                let errorDetails = error.message;
+                if (errorDetails.includes('Failed to fetch')) {
+                    errorDetails = "Possível bloqueio de CORS do navegador, ou a API da BytePay caiu/mudou de endereço.";
+                }
+
+                document.getElementById('errorMsg').innerText = errorDetails;
+                showState('error');
+                showPopup("Houve um problema de comunicação com o Gateway de Pagamento. Tente novamente.", "error");
+            }
+        }
+
+        // 3. VERIFICAÇÃO AUTOMÁTICA
+        async function checkStatus(txId) {
+            try {
+                // Requisição GET para nosso Proxy
+                const response = await fetch(`/api/bytepay/status/${txId}`, {
+                    method: 'GET'
+                });
+
+                if (!response.ok) return;
+
+                const data = await response.json();
+                const status = (data.status || data.state || "").toUpperCase();
+
+                // Identifica se foi pago
+                if (status === 'PAID' || status === 'APPROVED' || status === 'COMPLETED' || status === 'PAGO' || status === 'APROVADO') {
+                    if (checkInterval) clearInterval(checkInterval);
+                    showState('success');
+                }
+
+            } catch (error) {
+                console.warn("Polling retry error...", error);
+            }
+        }
+
+        // Botão de Copiar
+        function copyPixCode() {
+            const copyInput = document.getElementById('pixCopyPaste');
+            const code = copyInput.value;
+
+            if (!code) return;
+
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copyBtn');
+                btn.innerHTML = `<i data-lucide="check" class="w-5 h-5"></i>`;
+                btn.classList.replace('bg-slate-800', 'bg-emerald-600');
+                btn.classList.add('text-white');
+                lucide.createIcons();
+
+                showPopup("Código PIX copiado com sucesso! Abra o app do seu banco.", "success");
+
+                setTimeout(() => {
+                    btn.innerHTML = `<i data-lucide="copy" class="w-5 h-5"></i>`;
+                    btn.classList.replace('bg-emerald-600', 'bg-slate-800');
+                    lucide.createIcons();
+                }, 2000);
+            }).catch(err => {
+                showPopup("Não foi possível copiar automaticamente. Selecione o texto e copie manualmente.", "error");
+            });
+        }
+
+        // Inicia o processo quando a página carregar
+        window.onload = () => {
+            initCheckout();
+        };
+    </script>
+</body>
+
+</html>
