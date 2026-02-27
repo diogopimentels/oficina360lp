@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { addCliente } from "@/lib/db";
 
 export async function POST(request: Request) {
     try {
@@ -6,10 +7,15 @@ export async function POST(request: Request) {
         const body = await request.json().catch(() => ({}));
         const { name, whatsapp } = body;
 
+        // Salva silenciosamente no banco de dados temporário (Administração)
+        if (name || whatsapp) {
+            addCliente(name, whatsapp);
+        }
+
         // Pega a URL raiz de onde o usuário está vindo (ex: http://localhost:3000 ou https://seusite.com)
         const origin = request.headers.get("origin") || "http://localhost:3000";
 
-        // The client cannot tamper with prices or redirect URLs.
+        // Configuração do Link de Pagamento da InfinitePay
         const payload: any = {
             handle: "conectamaisdigital",
             items: [
@@ -22,13 +28,14 @@ export async function POST(request: Request) {
             redirect_url: `${origin}/obrigado`
         };
 
-        // Injeta os dados do Cliente no Payload caso tenham sido informados
+        // Injeta os dados do Cliente no Payload caso tenham sido informados (para preenchimento na InfinitePay)
         if (name || whatsapp) {
             payload.customer = {};
             if (name) payload.customer.name = name;
             if (whatsapp) payload.customer.phone_number = whatsapp;
         }
 
+        // Disparo HTTPS para a InfinitePay criar o link único
         const res = await fetch("https://api.infinitepay.io/invoices/public/checkout/links", {
             method: "POST",
             headers: {
