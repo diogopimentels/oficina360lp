@@ -15,6 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Pack Elétrica Automotiva PRO - O Kit Socorro Definitivo",
   description: "Tenha os Esquemas Elétricos Mais Usados do Brasil na Tela do Seu Celular. Acesse pinagens, sincronismos e diagramas em 5 segundos.",
+  icons: {
+    icon: '/oficina360.png',
+    shortcut: '/oficina360.png',
+  },
 };
 
 export default function RootLayout({

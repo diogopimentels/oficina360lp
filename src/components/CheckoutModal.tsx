@@ -49,23 +49,23 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-            <div className="relative w-full max-w-md p-6 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl animate-in fade-in zoom-in duration-300">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
+            <div className="relative w-full max-w-md p-6 bg-white border border-slate-200 rounded-2xl shadow-2xl animate-in fade-in zoom-in duration-300">
                 <button
                     onClick={!isLoading ? onClose : undefined}
-                    className="absolute top-4 right-4 text-slate-400 hover:text-white disabled:opacity-50"
+                    className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 disabled:opacity-50 transition-colors"
                     disabled={isLoading}
                 >
                     <X className="w-6 h-6" />
                 </button>
 
                 <div className="text-center mb-6">
-                    <h3 className="text-2xl font-bold text-white mb-2">Finalizar Acesso</h3>
-                    <p className="text-slate-400 text-sm">Preencha seus dados para receber o Pack no seu WhatsApp e E-mail.</p>
+                    <h3 className="text-2xl font-extrabold text-slate-900 mb-2">Finalizar Acesso</h3>
+                    <p className="text-slate-500 text-sm font-medium">Preencha seus dados para receber o Pack no seu WhatsApp e E-mail.</p>
                 </div>
 
                 {error && (
-                    <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 rounded-lg flex items-center gap-3 text-red-400 text-sm">
+                    <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg flex items-center gap-3 text-red-600 text-sm font-medium">
                         <AlertCircle className="w-5 h-5 shrink-0" />
                         <p>{error}</p>
                     </div>
@@ -73,26 +73,26 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">Nome Completo</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-1">Nome Completo</label>
                         <input
                             type="text"
                             required
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             disabled={isLoading}
-                            className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent disabled:opacity-50"
+                            className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent disabled:opacity-50 transition-shadow"
                             placeholder="João da Silva"
                         />
                     </div>
                     <div>
-                        <label className="block text-sm font-medium text-slate-300 mb-1">WhatsApp</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-1">WhatsApp</label>
                         <input
                             type="tel"
                             required
                             value={whatsapp}
                             onChange={(e) => setWhatsapp(e.target.value)}
                             disabled={isLoading}
-                            className="w-full px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent disabled:opacity-50"
+                            className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent disabled:opacity-50 transition-shadow"
                             placeholder="(11) 99999-9999"
                         />
                     </div>
@@ -100,7 +100,7 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full h-14 mt-6 text-lg font-bold text-white bg-emerald-600 rounded-lg shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02] hover:bg-emerald-500 flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                        className="w-full h-14 mt-6 text-lg font-bold text-white bg-emerald-600 rounded-lg shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02] hover:bg-emerald-500 flex items-center justify-center gap-2 disabled:opacity-70 disabled:hover:scale-100 disabled:cursor-not-allowed border border-emerald-500/10"
                     >
                         {isLoading ? (
                             <>
@@ -113,7 +113,7 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                     </button>
                 </form>
 
-                <div className="mt-4 text-center flex items-center justify-center gap-2 text-xs text-slate-500">
+                <div className="mt-5 text-center flex items-center justify-center gap-2 text-xs font-semibold text-slate-400">
                     📍 Ambiente 100% Seguro por InfinitePay
                 </div>
             </div>
