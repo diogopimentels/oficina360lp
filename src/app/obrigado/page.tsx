@@ -1,7 +1,15 @@
 import { CheckCircle2, Download, ShieldCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-export default function ObrigadoPage() {
+export default async function ObrigadoPage({ searchParams }: { searchParams: Promise<{ verify?: string }> }) {
+    const params = await searchParams;
+
+    // Proteção de Rota (Bloqueia quem acessa sem comprar)
+    if (params.verify !== "liberado") {
+        redirect("/");
+    }
+
     return (
         <main className="min-h-screen bg-slate-50 flex flex-col items-center justify-center p-4 text-slate-900 selection:bg-emerald-500/30">
             {/* Background Glow */}

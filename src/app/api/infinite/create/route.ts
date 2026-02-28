@@ -25,7 +25,7 @@ export async function POST(request: Request) {
                     description: "Pack Simplo 2026 - Acesso Imediato"
                 }
             ],
-            redirect_url: `${origin}/obrigado`
+            redirect_url: `${origin}/obrigado?verify=liberado`
         };
 
         // Injeta os dados do Cliente no Payload caso tenham sido informados (para preenchimento na InfinitePay)
