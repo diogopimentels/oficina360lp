@@ -23,15 +23,15 @@ export default function Home() {
         />
 
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-50 text-emerald-700 font-semibold text-xs md:text-sm tracking-wide mb-8 relative z-10 shadow-sm">
-          ATENÇÃO MECÂNICO: Informação técnica na hora certa evita prejuízo.
+          ATENCIÓN TALLERES: Trabajar a ciegas sin el plano técnico te está costando plata.
         </div>
 
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 mt-2 text-slate-900">
-          O Pack Elétrica Automotiva PRO: ABS, Injeção, Câmbio, Imobilizador e Muito Mais, Direto no <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-cyan-600">Seu Celular</span>.
+          El Pack Eléctrica Automotriz PRO: ABS, Inyección, Transmisión e Inmovilizadores directo en <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-cyan-600">tu celular</span>.
         </h1>
 
         <p className="text-lg md:text-xl text-slate-600 max-w-3xl font-medium mb-8 leading-relaxed">
-          Esquemas completos de elétrica, códigos de falha, sincronismos e revisão técnica acessíveis em segundos, sem sair do elevador.
+          Planos eléctricos completos, códigos de falla (DTC) y sincronismos accesibles en segundos. Cero estrés, resolviendo el problema sin moverte del elevador.
         </p>
 
         {/* App Preview Image Preview */}
@@ -41,13 +41,13 @@ export default function Home() {
 
         <div className="flex flex-col items-center gap-4 w-full">
           <ButtonCTA
-            text="QUERO ACESSAR AGORA POR R$ 21,49"
+            text="QUIERO ACCEDER AHORA POR 34.900 COP"
             onClick={() => setModalOpen(true)}
             className="w-full max-w-sm md:max-w-md py-4 text-lg bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-lg shadow-emerald-500/30 transition-all border border-emerald-500/20"
           />
           <p className="text-sm mt-3 text-slate-500 flex items-center gap-1.5 font-medium">
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            Pagamento único com acesso imediato.
+            Pago único. Acceso inmediato a la nube.
           </p>
         </div>
       </section>
@@ -56,14 +56,14 @@ export default function Home() {
       <section className="bg-white border-y border-slate-200 py-20 px-4 mt-4 shadow-sm">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-slate-900">
-            Quando falta informação técnica, <span className="text-slate-500">o risco é seu.</span>
+            Trabajar adivinando es el camino más rápido para quemar un módulo <span className="text-slate-500">(y pagarlo de tu bolsillo).</span>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              "Travar num ABS ou módulo de injeção por não ter o esquema elétrico completo na hora.",
-              "Ficar alternando entre scanner e computador para conferir código de falha e pinagem.",
-              "Arriscar sincronismo ou ligação errada e transformar um serviço simples em dor de cabeça."
+              "Quedar varado en un sistema de ABS o módulo de inyección por no tener el diagrama exacto a la mano.",
+              "Perder horas buscando en internet para confirmar un código de falla y el pinout correcto mientras el cliente presiona.",
+              "Arriesgar un sincronismo o hacer un corto por un cable mal conectado, convirtiendo un arreglo de 1 hora en un chicharrón de 3 días."
             ].map((pain, i) => (
               <div key={i} className="bg-slate-50 border border-slate-200 p-8 rounded-2xl flex flex-col items-start gap-5 hover:border-slate-300 transition-colors shadow-sm">
                 <div className="bg-white p-3 rounded-xl border border-slate-200 shadow-sm">
@@ -79,17 +79,17 @@ export default function Home() {
       {/* SEÇÃO: A SOLUÇÃO */}
       <section className="py-24 px-4 max-w-5xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 flex flex-col gap-2">
-          <span className="text-slate-900">A base técnica essencial da oficina,</span>
-          <span className="text-emerald-600">organizada no seu celular.</span>
+          <span className="text-slate-900">El escáner te da el código,</span>
+          <span className="text-emerald-600">nuestro Pack te da la solución en tu celular.</span>
         </h2>
 
         <div className="flex flex-col md:flex-row gap-12 items-center">
           <div className="flex-1 space-y-4 w-full">
             {[
-              { title: "Sistemas Completos", text: "Esquemas de ABS, ar-condicionado, câmbio, injeção eletrônica e parte elétrica completa.", icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" /> },
-              { title: "Diagnóstico Exato", text: "Códigos de falhas e apoio para diagnóstico com osciloscópio.", icon: <Search className="w-5 h-5 text-emerald-600" /> },
-              { title: "Mecânica Avançada", text: "Mix de imobilizadores, reparadores e módulos.", icon: <UploadCloud className="w-5 h-5 text-emerald-600" /> },
-              { title: "Manutenção & Motor", text: "Sincronismos, lubrificação do motor e revisão técnica dos veículos.", icon: <FileText className="w-5 h-5 text-emerald-600" /> }
+              { title: "Sistemas Completos", text: "Planos al detalle de ABS, aire acondicionado, inyección electrónica y cableado completo.", icon: <CheckCircle2 className="w-5 h-5 text-emerald-600" /> },
+              { title: "Diagnóstico Exacto", text: "Interpretación de códigos de falla (DTC) y apoyo directo para diagnóstico avanzado con osciloscopio.", icon: <Search className="w-5 h-5 text-emerald-600" /> },
+              { title: "Mecánica Avanzada", text: "Mix de inmovilizadores y pinouts exactos para módulos. No más ECUs quemadas.", icon: <UploadCloud className="w-5 h-5 text-emerald-600" /> },
+              { title: "Motor y Mantenimiento", text: "Tiempos de motor (sincronismos), lubricación y datos de revisión técnica multimarca.", icon: <FileText className="w-5 h-5 text-emerald-600" /> }
             ].map((item, i) => (
               <div key={i} className="flex items-start gap-4 bg-white p-5 rounded-2xl border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md transition-all">
                 <div className="pt-1">{item.icon}</div>
@@ -118,7 +118,7 @@ export default function Home() {
       {/* OFERTA IRRECUSÁVEL & ANCORAGEM DE PREÇO - SAAS STYLE */}
       <section className="bg-gradient-to-b from-slate-50 to-white border-t border-slate-200 py-24 px-4 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-slate-900">Conteúdo técnico de oficina por menos que um diagnóstico.</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-slate-900">Información técnica nivel concesionario por menos de lo que cobras por una escaneada.</h2>
 
           <div className="bg-white border border-slate-200 rounded-[32px] p-8 md:p-14 max-w-lg mx-auto relative shadow-xl overflow-hidden">
             {/* Decorational glow inside card */}
@@ -126,25 +126,25 @@ export default function Home() {
 
             <div className="mb-10 text-center flex flex-col items-center">
               <div className="mb-6 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-200 bg-orange-50 text-orange-600 font-bold text-sm md:text-base tracking-wide shadow-sm">
-                🔥 Pack Simplo 2026 • Literaturas Atualizadas
+                🔥 Librería Técnica 2026 • Acceso Inmediato
               </div>
-              <p className="text-slate-500 text-lg font-semibold mb-2 line-through">De R$ 97,00</p>
+              <p className="text-slate-500 text-lg font-semibold mb-2 line-through">De 149.900 COP</p>
               <div className="flex items-start justify-center">
-                <span className="text-2xl font-bold text-slate-400 mt-2 mr-1">R$</span>
-                <span className="text-7xl font-black text-slate-900 tracking-tight">21</span>
-                <span className="text-3xl font-bold text-emerald-600 mt-2">,49</span>
+                <span className="text-2xl font-bold text-slate-400 mt-2 mr-1">$</span>
+                <span className="text-7xl font-black text-slate-900 tracking-tight">34.900</span>
+                <span className="text-3xl font-bold text-emerald-600 mt-2">COP</span>
               </div>
-              <p className="text-emerald-700 font-bold text-sm mt-4 bg-emerald-50 px-4 py-1.5 rounded-full inline-block border border-emerald-100">Por apenas R$ 21,49</p>
+              <p className="text-emerald-700 font-bold text-sm mt-4 bg-emerald-50 px-4 py-1.5 rounded-full inline-block border border-emerald-100">Por solo 34.900 COP</p>
             </div>
 
             <div className="mb-10 text-left bg-slate-50 p-6 rounded-2xl border border-slate-200">
               <p className="text-sm md:text-base text-slate-600 font-medium leading-relaxed">
-                Um único erro em sincronismo ou pinagem pode custar muito mais que isso. Por R$ 21,49 você coloca na palma da mão informações que evitam retrabalho, queima de módulo e perda de tempo.
+                Un solo error en un pinout o un corto circuito te puede costar millones en repuestos. Por 34.900 COP te blindas contra errores, evitas retrabajos y sacas los carros del taller el doble de rápido. La tranquilidad no tiene precio, pero hoy está regalada.
               </p>
             </div>
 
             <ButtonCTA
-              text="GARANTIR MEU ACESSO AGORA"
+              text="ASEGURAR MI ACCESO AHORA"
               onClick={() => setModalOpen(true)}
               className="w-full py-4 text-sm md:text-base font-bold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_25px_rgba(16,185,129,0.4)] transition-all border border-emerald-500/20"
             />
@@ -156,14 +156,14 @@ export default function Home() {
       <footer className="pt-16 pb-12 px-4 text-center border-t border-slate-200 mt-10 text-slate-500 text-xs md:text-sm bg-slate-50">
         <div className="max-w-4xl mx-auto space-y-6">
           <p className="leading-relaxed max-w-2xl mx-auto">
-            Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook.
-            Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.
+            Este sitio no está afiliado a Facebook ni a ninguna entidad de Meta.
+            Una vez que abandonas Facebook, la responsabilidad es exclusiva de nuestro sitio web.
           </p>
           <div className="flex justify-center gap-6 font-medium text-slate-500">
-            <a href="#" className="hover:text-slate-900 transition-colors">Termos de Uso</a>
-            <a href="#" className="hover:text-slate-900 transition-colors">Políticas de Privacidade</a>
+            <a href="#" className="hover:text-slate-900 transition-colors">Términos de Uso</a>
+            <a href="#" className="hover:text-slate-900 transition-colors">Políticas de Privacidad</a>
           </div>
-          <p className="text-slate-400">© {new Date().getFullYear()} - Pack Elétrica PRO. Todos os direitos reservados.</p>
+          <p className="text-slate-400">© {new Date().getFullYear()} - Pack Eléctrica PRO. Todos los derechos reservados.</p>
         </div>
       </footer>
 

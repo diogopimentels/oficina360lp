@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pack Elétrica Automotiva PRO - O Kit Socorro Definitivo",
-  description: "Tenha os Esquemas Elétricos Mais Usados do Brasil na Tela do Seu Celular. Acesse pinagens, sincronismos e diagramas em 5 segundos.",
+  title: "Pack Eléctrica Automotriz PRO - El Kit de Rescate Definitivo",
+  description: "Ten los Planos Eléctricos más usados en Colombia directo en tu celular. Accede a pines, sincronismos y diagramas en 5 segundos.",
   icons: {
     icon: '/oficina360.png',
     shortcut: '/oficina360.png',
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="es">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

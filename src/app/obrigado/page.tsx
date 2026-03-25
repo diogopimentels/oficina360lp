@@ -23,30 +23,30 @@ export default async function ObrigadoPage({ searchParams }: { searchParams: Pro
                 </div>
 
                 <h1 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
-                    Pagamento Aprovado! 🎉
+                    ¡Pago Aprobado! 🎉
                 </h1>
 
                 <p className="text-slate-600 text-base md:text-lg mb-8 leading-relaxed font-medium">
-                    Parabéns! Seu acesso ao <strong className="text-emerald-600 font-bold">Pack Simplo 2026 PRO</strong> foi liberado com sucesso. Você já pode acessar todos os esquemas elétricos e manuais agora mesmo.
+                    ¡Coronamos, parcero! Tu acceso al <strong className="text-emerald-600 font-bold">Pack PRO</strong> está liberado con éxito. Ya puedes abrir todos los diagramas eléctricos y manuales ahora mismo.
                 </p>
 
                 <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 mb-8 text-left shadow-sm">
                     <h3 className="font-bold text-slate-900 mb-3 flex items-center gap-2">
                         <Download className="w-5 h-5 text-slate-500" />
-                        Instruções de Acesso:
+                        Instrucciones de Acceso:
                     </h3>
                     <ul className="space-y-3 text-sm text-slate-600 font-medium">
                         <li className="flex gap-2">
                             <span className="text-emerald-600 font-bold">1.</span>
-                            Clique no botão verde abaixo para abrir a pasta no Google Drive.
+                            Haz clic en el botón verde de abajo para abrir la carpeta en Google Drive.
                         </li>
                         <li className="flex gap-2">
                             <span className="text-emerald-600 font-bold">2.</span>
-                            Você pode visualizar os arquivos direto pelo celular ou baixar para acessar offline.
+                            Puedes ver los archivos directo en tu celular o descargarlos para usarlos sin internet en el taller.
                         </li>
                         <li className="flex gap-2">
                             <span className="text-emerald-600 font-bold">3.</span>
-                            Recomendamos salvar o link da pasta nos seus favoritos!
+                            ¡Te recomendamos guardar el link de la carpeta en tus favoritos para no perderlo!
                         </li>
                     </ul>
                 </div>
@@ -56,13 +56,13 @@ export default async function ObrigadoPage({ searchParams }: { searchParams: Pro
                     target="_blank"
                     className="group w-full h-16 flex items-center justify-center gap-3 text-lg font-bold text-white bg-emerald-600 hover:bg-emerald-500 rounded-xl shadow-[0_4px_20px_rgba(16,185,129,0.3)] hover:shadow-[0_6px_25px_rgba(16,185,129,0.4)] transition-all border border-emerald-500/20 hover:scale-[1.02]"
                 >
-                    ACESSAR O SIMPLO AGORA
+                    ACCEDER AL MATERIAL AHORA
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
                 <p className="mt-6 text-sm text-slate-500 flex items-center justify-center gap-1.5 font-bold">
                     <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                    Compra 100% segura processada via InfinitePay.
+                    Compra 100% segura.
                 </p>
             </div>
         </main>

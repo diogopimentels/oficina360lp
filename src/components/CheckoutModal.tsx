@@ -36,7 +36,7 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
             const data = await response.json();
 
             if (!response.ok || !data.url) {
-                throw new Error(data.error || data.message || "Erro ao gerar link de pagamento.");
+                throw new Error(data.error || data.message || "Error al generar el link de pago. Intenta de nuevo.");
             }
 
             // 3. Redirecionamento Magico Seguro
@@ -60,8 +60,8 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                 </button>
 
                 <div className="text-center mb-6">
-                    <h3 className="text-2xl font-extrabold text-slate-900 mb-2">Finalizar Acesso</h3>
-                    <p className="text-slate-500 text-sm font-medium">Preencha seus dados para receber o Pack no seu WhatsApp e E-mail.</p>
+                    <h3 className="text-2xl font-extrabold text-slate-900 mb-2">Finalizar Acceso</h3>
+                    <p className="text-slate-500 text-sm font-medium">Ingresa tus datos para recibir el Pack directo en tu WhatsApp y Correo.</p>
                 </div>
 
                 {error && (
@@ -73,7 +73,7 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
-                        <label className="block text-sm font-bold text-slate-700 mb-1">Nome Completo</label>
+                        <label className="block text-sm font-bold text-slate-700 mb-1">Nombre Completo</label>
                         <input
                             type="text"
                             required
@@ -81,7 +81,7 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                             onChange={(e) => setName(e.target.value)}
                             disabled={isLoading}
                             className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent disabled:opacity-50 transition-shadow"
-                            placeholder="João da Silva"
+                            placeholder="Juan Pérez"
                         />
                     </div>
                     <div>
@@ -93,7 +93,7 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                             onChange={(e) => setWhatsapp(e.target.value)}
                             disabled={isLoading}
                             className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent disabled:opacity-50 transition-shadow"
-                            placeholder="(11) 99999-9999"
+                            placeholder="+57 300 000 0000"
                         />
                     </div>
 
@@ -105,16 +105,16 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                         {isLoading ? (
                             <>
                                 <Loader2 className="w-5 h-5 animate-spin" />
-                                GERANDO PAGAMENTO...
+                                GENERANDO PAGO...
                             </>
                         ) : (
-                            "TESTAR PAGAMENTO (R$ 1,00)"
+                            "PAGAR CON NEQUI / PSE (34.900 COP)"
                         )}
                     </button>
                 </form>
 
                 <div className="mt-5 text-center flex items-center justify-center gap-2 text-xs font-semibold text-slate-400">
-                    📍 Ambiente 100% Seguro por InfinitePay
+                    📍 Pago 100% Seguro
                 </div>
             </div>
         </div>
