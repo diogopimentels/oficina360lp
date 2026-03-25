@@ -10,6 +10,7 @@ interface CheckoutModalProps {
 
 export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
     const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
     const [whatsapp, setWhatsapp] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
@@ -22,25 +23,20 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
         setError("");
 
         try {
-            // ==========================================
-            // 1. (Futuramente) Disparo pro Webhook (Google Sheets) da sua Planilha vai aqui
-            // ==========================================
-
-            // 2. Disparo para nossa API Proxy Interna da InfinitePay
-            const response = await fetch('/api/infinite/create', {
+            const response = await fetch('/api/checkout/dlocal', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, whatsapp })
+                body: JSON.stringify({ name, email, whatsapp })
             });
 
             const data = await response.json();
 
-            if (!response.ok || !data.url) {
+            if (!response.ok || !data.checkout_url) {
                 throw new Error(data.error || data.message || "Error al generar el link de pago. Intenta de nuevo.");
             }
 
-            // 3. Redirecionamento Magico Seguro
-            window.location.href = data.url;
+            // Redireciona o usuário para a página de checkout da dLocal Go
+            window.location.href = data.checkout_url;
 
         } catch (err: any) {
             setError(err.message);
@@ -85,6 +81,18 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                         />
                     </div>
                     <div>
+                        <label className="block text-sm font-bold text-slate-700 mb-1">Correo Electrónico</label>
+                        <input
+                            type="email"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            disabled={isLoading}
+                            className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent disabled:opacity-50 transition-shadow"
+                            placeholder="juan@correo.com"
+                        />
+                    </div>
+                    <div>
                         <label className="block text-sm font-bold text-slate-700 mb-1">WhatsApp</label>
                         <input
                             type="tel"
@@ -108,7 +116,7 @@ export function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
                                 GENERANDO PAGO...
                             </>
                         ) : (
-                            "PAGAR CON NEQUI / PSE (34.900 COP)"
+                            "PAGAR CON NEQUI / PSE (19.900 COP)"
                         )}
                     </button>
                 </form>
